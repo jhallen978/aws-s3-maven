@@ -273,7 +273,7 @@ public final class AmazonS3Wagon extends AbstractWagon {
 
             in = new TransferProgressFileInputStream(source, transferProgress);
             PutObjectRequest request = new PutObjectRequest(this.bucketName, key, in, objectMetadata);
-            request.withCannedAcl(CannedAccessControlList.AuthenticatedRead);
+            request.setCannedAcl(CannedAccessControlList.AuthenticatedRead);
             this.amazonS3.putObject(request);
         } catch (AmazonServiceException e) {
             throw new TransferFailedException(String.format("Cannot write file to '%s'", destination), e);
