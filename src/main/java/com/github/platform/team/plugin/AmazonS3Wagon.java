@@ -271,8 +271,9 @@ public final class AmazonS3Wagon extends AbstractWagon {
             objectMetadata.setSSEAlgorithm(ObjectMetadata.AES_256_SERVER_SIDE_ENCRYPTION);
 
             in = new TransferProgressFileInputStream(source, transferProgress);
-
-            this.amazonS3.putObject(new PutObjectRequest(this.bucketName, key, in, objectMetadata));
+            request = new PutObjectRequest(this.bucketName, key, in, objectMetadata);
+            request.withCannedAcl(CannedAccessControlList.AuthenticatedRead);
+            this.amazonS3.putObject(request);
         } catch (AmazonServiceException e) {
             throw new TransferFailedException(String.format("Cannot write file to '%s'", destination), e);
         } catch (FileNotFoundException e) {
