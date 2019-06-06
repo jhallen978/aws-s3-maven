@@ -47,6 +47,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.github.platform.team.plugin.aws.AWSMavenCredentialsProviderChain;
 import com.github.platform.team.plugin.data.TransferProgress;
 import com.github.platform.team.plugin.data.transfer.TransferProgressFileInputStream;
